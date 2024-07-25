@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenando Valores</title>
+    <script src="ordenando.js"></script>
+</head>
+<body>
+    <h1>Ordenando Valores</h1>
+    <label for="valor">Valor:</label>
+    <input type="number" id="valor" value="1">
+    <button onclick="add()">Adicionar</button><br><br>
+    <select id="algoritmo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="quick">Quick Sort</option>
+    </select>
+    <button onclick="ordenar()">Ordenar</button>
+    <button onclick="misturar()">Misturar</button>
+    <ul id="valores"></ul>
+
+    <script>
+        function add() {
+            let valor = document.getElementById("valor").value;
+            let lista = document.getElementById("valores");
+            let node = document.createElement("li");
+            let textnode = document.createTextNode(valor);
+            node.appendChild(textnode);
+            lista.appendChild(node);
+        }
+
+        function ordenar() {
+    let lista = document.getElementById("valores");
+    let algoritmo = document.getElementById("algoritmo").value;
+    let vetor = Array.from(lista.children).map(li => parseInt(li.innerHTML));
+
+    switch (algoritmo) {
+        case "bubble":
+            bubble_sort(vetor);
+            break;
+        case "selection":
+            selection_sort(vetor);
+            break;
+        case "quick":
+            quick_sort(vetor, 0, vetor.length - 1);
+            break;
+    }
+
+    // Atualiza o conteúdo dos elementos <li> existentes
+    for (let i = 0; i < vetor.length; i++) {
+        lista.children[i].innerHTML = vetor[i];
+    }
+}
+
+        function misturar() {
+            let lista = document.getElementById("valores");
+            let vetor = Array.from(lista.children).map(li => parseInt(li.innerHTML));
+            shuffle(vetor, vetor.length);
+            lista.innerHTML = vetor.map(valor => `<li>${valor}</li>`).reduce((acc, li) => acc + li, '');
+        }
+    </script>
+</body>
+</html>

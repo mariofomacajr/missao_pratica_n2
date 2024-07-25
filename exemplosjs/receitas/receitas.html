@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Receitas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="receitas.css"> 
+</head>
+<body onload="preencheCatalogo()">
+
+    <header class="bg-warning">
+        <h1 class="text-center">Catálogo de Receitas</h1>
+    </header>
+
+    <main class="container-fluid bg-warning">
+        <div class="row flex-wrap" id="pnlCatalogo">
+            </div>
+    </main>
+
+    <footer>
+        <p style="text-align: center;">Copyright &copy; 2024 - Mario</p>
+    </footer>
+    
+    <script>
+        const receitas = [
+            {
+                "titulo": "Omelete a la Jabba",
+                "imagem": "imagens/omelete.jpg",
+                "preparo": "Em uma tigela, bata os ovos com um garfo até ficarem levemente espumosos. Adicione o sal, a pimenta e o leite (se usar). Aqueça a manteiga ou óleo em uma frigideira antiaderente em fogo médio. Despeje a mistura de ovos na frigideira quente. Cozinhe por cerca de 2-3 minutos de cada lado, ou até dourar e ficar cozido a gosto. Dobre ao meio ou enrole e sirva imediatamente.",
+                "ingredientes": [
+                    "2 ovos",
+                    "Sal a gosto",
+                    "Pimenta do reino a gosto",
+                    "1 colher de sopa de leite (opcional)",
+                    "1 colher de sopa de manteiga ou óleo"
+                ]
+            },
+            {
+                "titulo": "Panquecas galáticas",
+                "imagem": "imagens/panqueca.png",
+                "preparo": "Em uma tigela grande, misture a farinha, o açúcar, o fermento e o sal. Em outra tigela, misture o ovo, o leite e a manteiga derretida. Adicione os ingredientes líquidos aos ingredientes secos e misture até incorporar (não misture demais). Aqueça uma chapa ou frigideira levemente untada em fogo médio. Despeje 1/4 de xícara da massa para cada panqueca. Cozinhe por cerca de 2-3 minutos de cada lado, ou até dourar e formar bolhas na superfície. Sirva quente com seus acompanhamentos favoritos.",
+                "ingredientes": [
+                    "1 xícara (120g) de farinha de trigo",
+                    "1 colher de sopa (15g) de açúcar",
+                    "2 colheres de chá (10g) de fermento em pó",
+                    "1/2 colher de chá (3g) de sal",
+                    "1 ovo grande",
+                    "1 xícara (240ml) de leite",
+                    "2 colheres de sopa (30g) de manteiga derretida"
+                ]
+            },
+            {
+                "titulo": "Macarronada Sith",
+                "imagem": "imagens/macarronada.jpg",
+                "preparo": "Cozinhe o macarrão em água fervente com sal de acordo com as instruções da embalagem. Enquanto o macarrão cozinha, prepare o molho. Em uma panela grande, aqueça o azeite de oliva em fogo médio. Adicione a cebola picada e cozinhe até ficar transparente. Adicione o alho picado e cozinhe por mais um minuto. Adicione os tomates picados, a água, o sal e a pimenta do reino. Deixe o molho ferver, depois reduza o fogo e cozinhe por cerca de 15 minutos, mexendo ocasionalmente. Escorra o macarrão cozido e adicione-o à panela com o molho. Misture bem para revestir o macarrão com o molho. Sirva imediatamente com queijo parmesão ralado a gosto.",
+                "ingredientes": [
+                    "500g de macarrão espaguete",
+                    "1 cebola picada",
+                    "2 dentes de alho picados",
+                    "800g de tomates picados (ou 2 latas de tomate picado)",
+                    "1/2 xícara de água",
+                    "Sal e pimenta do reino a gosto",
+                    "1/4 xícara de azeite de oliva",
+                    "Queijo parmesão ralado a gosto (para servir)"
+                ]
+            },
+            {
+                "titulo": "Brigadeiro Dark Side",
+                "imagem": "imagens/brigadeiro.jpg",
+                "preparo": "Em uma panela média, adicione o leite condensado, a manteiga e o chocolate em pó. Leve ao fogo baixo e mexa constantemente com uma colher de pau. Continue mexendo até que a mistura desgrude do fundo da panela (cerca de 10-15 minutos). Retire do fogo e transfira a mistura para um prato untado com manteiga. Deixe esfriar completamente em temperatura ambiente. Depois que o brigadeiro estiver frio, unte as mãos com manteiga e enrole em bolinhas. Passe as bolinhas no chocolate granulado e sirva.",
+                "ingredientes": [
+                    "1 lata de leite condensado",
+                    "1 colher de sopa de manteiga sem sal",
+                    "3 colheres de sopa de chocolate em pó",
+                    "Chocolate granulado para decorar"
+                ]
+            },
+            {
+                "titulo": "Mousse do Palpatine",
+                "imagem": "imagens/mousse-maracuja.jpg",
+                "preparo": "No liquidificador, bata o leite condensado, o creme de leite e o suco de maracujá até obter um creme homogêneo. Despeje a mistura em taças ou em um refratário e leve à geladeira por pelo menos 2 horas antes de servir. Decore com sementes de maracujá antes de servir, se desejar.",
+                "ingredientes": [
+                    "1 lata de leite condensado",
+                    "1 caixa de creme de leite (200g)",
+                    "1/2 xícara (chá) de suco de maracujá concentrado"
+                ]
+            },
+            {
+                "titulo": "Pão de Queijo Darth Vader",
+                "imagem": "imagens/pao_queijo.png",
+                "preparo": "Em uma panela, coloque o leite, o óleo e o sal e leve ao fogo médio até ferver. Retire do fogo e adicione o polvilho de uma só vez, mexendo bem até obter uma massa lisa e homogênea. Adicione os ovos, um a um, incorporando bem à massa após cada adição. Pré-aqueça o forno a 200 °C. Unte e enfarinhe uma forma para muffins ou pão de queijo. Com auxílio de uma colher, distribua a massa nas forminhas, preenchendo-as até ¾ da capacidade. Leve ao forno por cerca de 30 minutos ou até dourar. Sirva quente.",
+                "ingredientes": [
+                    "1 xícara (chá) de leite integral",
+                    "1/2 xícara (chá) de óleo",
+                    "1 colher (chá) de sal",
+                    "2 xícaras (chá) de polvilho doce",
+                    "2 ovos"
+                ]
+            }
+        ];
+        
+        function getListaIngredientes(receita) {
+            let listaHTML = "<ul>";
+            listaHTML += receita.ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).reduce((acc, curr) => acc + curr, '');
+            listaHTML += "</ul>";
+            return listaHTML;
+        }
+
+        function getCard(receita) {
+            return `
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card" style="width: 250px;">
+                        <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
+                        <div class="card-body">
+                            <h5 class="card-title">${receita.titulo}</h5>
+                            <div class="card-text">
+                                ${getListaIngredientes(receita)}
+                                <hr>
+                                ${receita.preparo}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function preencheCatalogo() {
+            const pnlCatalogo = document.getElementById("pnlCatalogo");
+            const cardsHTML = receitas.map(getCard).reduce((acc, curr) => acc + curr, '');
+            pnlCatalogo.innerHTML = cardsHTML;
+        }
+    </script>
+
+</body>
+</html>
